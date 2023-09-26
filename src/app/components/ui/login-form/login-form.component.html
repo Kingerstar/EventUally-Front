@@ -1,0 +1,17 @@
+<form (ngSubmit)="user.email && user.password && onSubmit()">
+    <app-input-style
+        name="email"
+        type="email"
+        label="E-mail*"
+        placeHolder="mon@email.fr"
+        (inputChange)="onInputReceive($event, 'email')"
+    ></app-input-style>
+    <app-input-style
+        name="password"
+        type="password"
+        label="Mot de passe*"
+        placeHolder="***"
+        (inputChange)="onInputReceive($event, 'password')"
+    ></app-input-style>
+    <input type="submit" value="Se connecter">
+</form>

@@ -1,0 +1,32 @@
+<form #eventCreation="ngForm" (ngSubmit)="eventCreation.valid && endingDate.dirty && hasChoosedCategoryList() && onSubmit()">
+
+    <label for="name">Nom de l'évènement</label>
+    <input type="text" [(ngModel)]="event.name" name="name" id="name" #name="ngModel" minlength="10" maxlength="75" required autofocus>
+    <p [hidden]="name.pristine || !name.errors?.['minlength']" class="form-error">Taille minimum de 10 caractères.</p>
+    <p [hidden]="name.pristine || !name.errors?.['maxlength']" class="form-error">Taille maximum de 75 caractères.</p>
+
+    <label for="description">Description</label>
+    <textarea [(ngModel)]="event.description" name="description" id="description" #description="ngModel" minlength="75" maxlength="255" required></textarea>
+    <p [hidden]="description.pristine || !description.errors?.['minlength']" class="form-error">Taille minimum de 75 caractères.</p>
+    <p [hidden]="description.pristine || !description.errors?.['maxlength']" class="form-error">Taille max de 255 caractères.</p>
+
+    <app-localization-form [districtList]="districtList" (emitLocalization)="onReceiveLocalization($event)"></app-localization-form>
+
+    <app-categories-form [categoryList]="categoryList" (emitChoosedCategoryList)="onReceiveChoosedCategoryList($event)"></app-categories-form>
+
+    <fieldset>
+        <legend>Dates de l'event</legend>
+        <label for="starting-date">Début</label>
+        <input type="datetime-local" [(ngModel)]="event.startingDate" name="starting-date" id="starting-date" #startingDate="ngModel" required>
+        <label for="ending-date">Fin</label>
+        <input type="datetime-local" [(ngModel)]="event.endingDate" name="ending-date" id="ending-date" #endingDate="ngModel" required>
+    </fieldset>
+
+    <label for="user-max-join">Capacité max</label>
+    <input type="number" [(ngModel)]="event.userMaxJoin" name="user-max-join" id="user-max-join" #userMaxJoin="ngModel" required>
+
+    <p *ngIf="!hasChoosedCategoryList()" class="form-error">Il faut au moins séléctionner une catégorie pour cet évènement.</p>
+    <p *ngIf="endingDate.pristine" class="form-error">Il faut au moins changer la date de fin.</p>
+
+    <input type="submit" value="Créer">
+</form>

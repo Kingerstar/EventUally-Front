@@ -1,0 +1,8 @@
+<app-filter (selectedCategoriesChange)="onCategoryChange($event)"
+    (selectedSubCategoriesChange)="onCategoryChange($event)">
+</app-filter>
+
+<div class="event-cards-container">
+    <app-event-card *ngFor="let event of filterEventsByCategories()" [event]="event">
+    </app-event-card>
+</div>

@@ -1,0 +1,8 @@
+<div *ngIf="display === 'logo'" class="logo-splash">
+    <img src="assets/images/logo.png" alt="Logo eventually">
+    <p>
+        From <span class="highlight">CultiVibes</span><br>
+        <svg class="hidden-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>CultiVibes</title><path [attr.d]="emoticonCultiVibes" /></svg>
+    </p>
+</div>
+<app-hero *ngIf="display === 'hero'"></app-hero>

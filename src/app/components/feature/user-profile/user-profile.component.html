@@ -1,0 +1,29 @@
+<div class="profile-head">
+    <img [src]="user.profilePicture" alt="Image de profile">
+    <h2>{{ user.pseudo }}</h2>
+</div>
+
+<div [routerLink]="['/week']" class="week-proposal">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Semaine d'évènements</title><path d="M14,14H7V16H14M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M17,10H7V12H17V10Z" /></svg>
+    <p>Semaine d'évènements</p>
+</div>
+
+<div *ngIf="needTutoSwipeTab" (click)="closeTutoSwipeTab()" class="tuto-swipe-tab">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Fermer l'aide</title><path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" /></svg>
+    <p>Tu peux faire défiler les onglets ci-dessous vers la droite&nbsp;👉</p>
+</div>
+<div class="tab">
+    <button (click)="changeTabTo('intro')" [ngClass]="currentTab === 'intro' ? 'tab-selected' : ''">Intro</button>
+    <button (click)="changeTabTo('events')" [ngClass]="currentTab === 'events' ? 'tab-selected' : ''">Évènements suivis</button>
+    <button (click)="changeTabTo('orga')" [ngClass]="currentTab === 'orga' ? 'tab-selected' : ''">Orga suivies</button>
+    <button (click)="changeTabTo('reacts')" [ngClass]="currentTab === 'reacts' ? 'tab-selected' : ''">Mes réactions</button>
+</div>
+
+<div class="tab-infos-container">
+    <app-profile-intro *ngIf="currentTab === 'intro'" [introduction]="user.introduction" (formEmitter)="onIntroReceive($event)"></app-profile-intro>
+    <app-profile-events (eventLeaveEmitter)="onLeaveEventReceive($event)" *ngIf="currentTab === 'events'" [eventJoined]="user.eventJoined"></app-profile-events>
+    <app-profile-orga *ngIf="currentTab === 'orga'" [organizationFollowed]="user.organizationFollowed"></app-profile-orga>
+    <app-profile-reacts *ngIf="currentTab === 'reacts'" [reacts]="user.reacts"></app-profile-reacts>
+</div>
+
+<div style="text-align: center;"><button class="button logout" (click)="onLogOut()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Déconnexion</title><path d="M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13" /></svg>Déconnexion</button></div>

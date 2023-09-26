@@ -1,0 +1,6 @@
+<app-header></app-header>
+<main [ngStyle]="{'height': currentUrl === '/welcome' ? '100vh' : '80vh' }">
+    <router-outlet></router-outlet>
+</main>
+<app-nav-bar></app-nav-bar>
+<app-pop-up></app-pop-up>

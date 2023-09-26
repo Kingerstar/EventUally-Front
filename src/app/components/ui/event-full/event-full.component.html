@@ -1,0 +1,56 @@
+<div class="event-card-container">
+    <img [src]="event.banner" alt="Image de l'évènement {{event.name}}">
+    <div class="event-card">
+        <div class=details-container>
+            <ul>
+                <li *ngFor="let category of event.categoryList" class="tag">
+                    {{ category | titlecase }}
+                </li>
+            </ul>
+            <h2>{{ event.name}}</h2>
+            <fieldset>
+                <legend><app-title-style title="Description"></app-title-style></legend>
+                <p>{{ event.description }}</p>
+            </fieldset>
+            <fieldset>
+                <legend><app-title-style title="Date"></app-title-style></legend>
+                <ul>
+                    <li>Début&nbsp;: {{formatDateAndTime(event.startingDate)}}</li>
+                    <li>Fin&nbsp;: {{formatDateAndTime(event.endingDate)}}</li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend><app-title-style title="Adresse"></app-title-style></legend>
+
+                <app-map-focus
+                    *ngIf="event.localization.gpsCoordinates[0] !== 0 && event.localization.gpsCoordinates[1] !== 0"
+                    [gps]="event.localization.gpsCoordinates"></app-map-focus>
+
+                <ul>
+                    <li>{{ event.localization.streetNumber }} {{ event.localization.streetName }} {{
+                        event.localization.cityName
+                        }}</li>
+                    <li>{{ event.localization.gpsCoordinates[0] }}&nbsp;; {{ event.localization.gpsCoordinates[1] }}
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend><app-title-style title="Organisation"></app-title-style></legend>
+
+                <div style="display:flex ; justify-content: center;">
+                    <a [routerLink]="['/organization/' + mergeIdAndName(event.organization.id,event.organization.name)]"
+                        class="button orga-profile">
+                        <img class="logo" [src]="event.organization.logo">
+                        <span style="height: fit-content;
+                        margin: auto;margin-left:0.5em;">{{ event.organization.name }}</span>
+                    </a>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="interaction-buttons">
+            <app-react-button></app-react-button>
+            <app-join-event *ngIf="event.organization.id !== 0 " [receivedId]="event.id"></app-join-event>
+        </div>
+    </div>
+</div>

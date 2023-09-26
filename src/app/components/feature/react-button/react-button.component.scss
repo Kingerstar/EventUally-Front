@@ -1,0 +1,91 @@
+.react-body {
+    display: flex;
+    position: relative;
+}
+
+.react-list {
+    display: flex;
+    text-decoration: none;
+    margin: 0 0.5em;
+    position: absolute;
+    top: -2em;
+    background-color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.sum-of-reacts {
+    margin-left: 1em;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px) rotate(-5deg);
+    }
+
+    75% {
+        transform: translateX(5px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.react-button {
+    position: relative;
+    margin: 0.5em;
+    border: none;
+    background-color: black;
+    font-size: 130%;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.react-button:hover {
+    transform: translateY(-2px);
+    animation: wiggle 0.4s ease infinite;
+}
+
+.react-button::before,
+.react-button::after {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.react-button::before {
+    content: attr(title);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+}
+
+.react-button::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.react-button:hover::before {
+    opacity: 1;
+    visibility: visible;
+}

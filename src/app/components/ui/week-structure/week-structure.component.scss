@@ -1,0 +1,24 @@
+.week-container{
+    width: 90vw;
+    margin: auto;
+    margin-top: 3em;
+}
+
+.event-card{
+    border: 2px solid black;
+    box-shadow: var(--box-shadow-button);
+    margin-bottom: 3em;
+    .header{
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        p{
+            font-size: 2em;
+        }
+    }
+    .contents{
+        cursor: pointer;
+        padding: 0.5em 1em;
+    }
+}

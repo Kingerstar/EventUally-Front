@@ -1,0 +1,31 @@
+<div id="map-container">
+    <div class="map-legend" (click)="onMapLegendClick()" [ngClass]="{'map-legend-displayed' : isMapLegendDisplayed}">
+        <div *ngIf="isMapLegendDisplayed">
+            <div class="close-map-legend"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Fermer</title><path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" /></svg></div>
+            <h2>Légende</h2>
+            <div class="map-legend-contents">
+                <app-title-style title="Les couleurs"></app-title-style>
+                <p style="margin-left: 1em;">Il existe quatre couleurs différentespour un évènement&nbsp;:</p>
+                <ul>
+                    <li><div class="color-square cs-now"></div> en cours&nbsp;;</li>
+                    <li><div class="color-square cs-week"></div> qui aura lieu dans les sept jours&nbsp;;</li>
+                    <li><div class="color-square cs-month"></div> qui aura lieu  dans le mois&nbsp;;</li>
+                    <li><div class="color-square cs-else"></div> ou dans les mois suivants.</li>
+                </ul>
+
+                <app-title-style title="Les logos"></app-title-style>
+                <div class="map-legend-logo-container">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                        <p>Plusieurs</p>
+                    </div>
+                    <div *ngFor="let svg of svgMapList">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><title>{{ svg[0] }}</title><path [attr.d]="svg[1]" /></svg>
+                    <p>{{ svg[2] }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Légende de la carte</title><path d="M9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3L20.34,3.03L15,5.1L9,3M8,5.45V17.15L5,18.31V6.46L8,5.45M10,5.47L14,6.87V18.53L10,17.13V5.47M19,5.7V17.54L16,18.55V6.86L19,5.7M7.46,6.3L5.57,6.97V9.12L7.46,8.45V6.3M7.46,9.05L5.57,9.72V11.87L7.46,11.2V9.05M7.46,11.8L5.57,12.47V14.62L7.46,13.95V11.8M7.46,14.55L5.57,15.22V17.37L7.46,16.7V14.55Z" /></svg>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
+    <app-input-style
+        name="pseudo"
+        type="text"
+        label="Pseudo ou nom*"
+        placeHolder="Mon pseudo ou sinon mon nom"
+        (inputChange)="onInputReceive($event, 'pseudo')"
+    ></app-input-style>
+    <app-input-style
+        name="email"
+        type="email"
+        label="E-mail*"
+        placeHolder="mon@email.fr"
+        (inputChange)="onInputReceive($event, 'email')"
+    ></app-input-style>
+    <app-input-style
+        name="message"
+        type="textarea"
+        label="Message*"
+        placeHolder="Dis nous tout !"
+        (inputChange)="onInputReceive($event, 'message')"
+    ></app-input-style>
+    <input type="submit" value="Envoyer">
+</form>

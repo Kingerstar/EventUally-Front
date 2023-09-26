@@ -1,0 +1,15 @@
+<div class="admin-popup-all" (click)="closePopup($event)">
+    <div class="admin-popup-container">
+        <p *ngIf="interaction === 'delete'">
+            Souhaites-tu vraiment <span class="highlight">supprimer</span> dans {{ tab }} l'entrée&nbsp;:<br>
+            <span class="highlight">#{{ objectSelected.id }} {{ tab === 'users' ? $any(objectSelected).pseudo : $any(objectSelected).name }}</span><br>
+            de manière définitive&nbsp;?
+        </p>
+        <br>
+        <div style="display: flex; justify-content: space-between;">
+            <button (click)="closePopup($event)"  class="button less-important-action cancel">Annuler</button>
+            <button *ngIf="interaction === 'update'" (click)="performAction()" class="button update">Modifier</button>
+            <button *ngIf="interaction === 'delete'" (click)="performAction()" class="button delete">Supprimer</button>
+        </div>
+    </div>
+</div>

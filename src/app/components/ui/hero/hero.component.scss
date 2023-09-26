@@ -1,0 +1,99 @@
+.hero{
+    background: repeat-x center url("/assets/images/hero.jpg");
+    color: white;
+    padding-bottom: 4em;
+    position: relative;
+    text-align: center;
+    line-height: normal;
+    h1{
+        font-size: 4em;
+        padding: 1em 0;
+        text-shadow: 2px 2px 1px black;
+    }
+    p{
+        font-size: 1.5em;
+        text-shadow: 2px 2px 1px black;
+        font-weight: bold;
+        text-align: justify;
+        margin: 0 2.5vh;
+    }
+    .discover{
+        text-align: center;
+        font-size: 1.5em;
+    }
+    a{
+        display: inline-block;
+        margin-bottom: 2em;
+    }
+    .triangle{
+        position: absolute;
+        bottom: 0;
+        height: 0;
+        width: 0;
+        border-bottom: 4em solid var(--color-dominant);
+        border-left: 100vw solid transparent;
+    }
+}
+
+section{
+    margin-bottom: 2em;
+}
+
+.as-role-buttons-container{
+    display: flex;
+    button{
+        font-size: 1.5em;
+        width: 100%;
+        border: none;
+        background-color: var(--color-light-accent);
+        color: var(--color-dominant);
+        padding: 0.5em;
+        &.selected{
+            background-color: var(--color-accent);
+        }
+    }
+    button:first-child{
+        border-right: 1px solid var(--color-dominant);
+    }
+}
+
+ul{
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 10em;
+    li{
+        text-align: justify;
+        list-style: none;
+    }
+}
+
+svg{
+    height: 1.5em;
+    width: 1.5em;
+    fill: var(--color-accent);
+}
+
+.figure-card{
+    display: flex;
+    gap: 1em;
+    //width: 75%;
+    margin: 1em 5vw;
+    &:nth-child(2n+1){
+        flex-direction: row-reverse;
+        float: right;
+        text-align: right;
+    }
+    svg{
+        height: 48px;
+        width: 48px;
+        background-color: var(--color-complement);
+        fill: var(--color-dominant);
+        border-radius: 2em;
+        padding: 8px;
+    }
+}
+.number{
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 3em;
+}

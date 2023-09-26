@@ -1,0 +1,142 @@
+<app-admin-popup *ngIf="typeOfInteraction" [tab]="currentTabName" [interaction]="typeOfInteraction" [objectSelected]="objectSelected" (dataSended)="onPopupReceive($event)"></app-admin-popup>
+<div class="tab-container">
+    <button (click)="switchTabTo('users')" [ngClass]="currentTabName === 'users' || currentTabName === '' ? 'tab-selected' : ''">Utilisateurs</button>
+    <button (click)="switchTabTo('organizations')" [ngClass]="currentTabName === 'organizations' || currentTabName === '' ? 'tab-selected' : ''">Organisations</button>
+    <button (click)="switchTabTo('events')" [ngClass]="currentTabName === 'events' || currentTabName === '' ? 'tab-selected' : ''">Évènements</button>
+</div>
+
+<div class="server-return-container">
+    <details *ngFor="let element of serverReturn" >
+        <summary *ngIf="currentTabName === 'users'">#{{ element.id }} {{ element.pseudo }}</summary>
+        <summary *ngIf="currentTabName === 'organizations'">#{{ element.id }} {{ element.name }}</summary>
+        <summary *ngIf="currentTabName === 'events'">#{{ element.id }} {{ element.name }}</summary>
+
+        <table *ngIf="currentTabName === 'users'">
+            <tr>
+                <td>Pseudo</td><td>{{ element.pseudo }}</td>
+            </tr>
+            <tr>
+                <td>Prénom</td><td>{{ element.firstName }}</td>
+            </tr>
+            <tr>
+                <td>Nom</td><td>{{ element.lastName }}</td>
+            </tr>
+            <tr>
+                <td>E-mail</td><td>{{ element.email }}</td>
+            </tr>
+            <tr>
+                <td>Password</td><td>******</td>
+            </tr>
+            <tr>
+                <td>Photo de profile</td><td><img [src]="element.profilePicture"></td>
+            </tr>
+            <tr>
+                <td>Actions</td>
+                <td style="display: flex; justify-content: space-between;">
+                    <button (click)="updateById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('modifier', 'title') }}</title>
+                            <path attr.d="{{ getSvg('modifier', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                    <button (click)="deleteById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('supprimer', 'title') }}</title>
+                            <path attr.d="{{ getSvg('supprimer', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+
+        <table *ngIf="currentTabName === 'organizations'">
+            <tr>
+                <td>Site</td><td>{{ element.websiteLink }}</td>
+            </tr>
+            <tr>
+                <td>E-mail</td><td>{{ element.email }}</td>
+            </tr>
+            <tr>
+                <td>Mot de passe</td><td>******</td>
+            </tr>
+            <tr>
+                <td>Logo</td><td><img [src]="element.logo"></td>
+            </tr>
+            <tr>
+                <td>Catégories</td><td>{{ element.categoryList }}</td>
+            </tr>
+            <tr>
+                <td>Description</td><td>{{ element.description }}</td>
+            </tr>
+            <tr>
+                <td>Localisation</td><td>{{ element.localization.streetNumber }} {{ element.localization.streetName }}<br>{{ element.localization.districtName }}<br>{{ element.localization.cityName }}</td>
+            </tr>
+            <tr>
+                <td>Actions</td>
+                <td style="display: flex; justify-content: space-between;">
+                    <button (click)="updateById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('modifier', 'title') }}</title>
+                            <path attr.d="{{ getSvg('modifier', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                    <button (click)="deleteById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('supprimer', 'title') }}</title>
+                            <path attr.d="{{ getSvg('supprimer', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        
+        <table *ngIf="currentTabName === 'events'">
+            <tr>
+                <td>Bannière</td><td><img [src]="element.banner"></td>
+            </tr>
+            <tr>
+                <td>ID de l'orga</td><td>{{ element.organizationId }}</td>
+            </tr>
+            <tr>
+                <td>Description</td><td>{{ element.description }}</td>
+            </tr>
+            <tr>
+                <td>Localisation</td><td>{{ element.localization.streetNumber }} {{ element.localization.streetName }}<br>{{ element.localization.districtName }}<br>{{ element.localization.cityName }}</td>
+            </tr>
+            <tr>
+                <td>Coordonnées</td><td>{{ element.localization.gpsCoordinates[0] }} ; {{ element.localization.gpsCoordinates[1] }}</td>
+            </tr>
+            <tr>
+                <td>Catégories</td><td>{{ element.categoryList }}</td>
+            </tr>
+            <tr>
+                <td>Début</td><td>{{ shortDate(element.startingDate) }}</td>
+            </tr>
+            <tr>
+                <td>Fin</td><td>{{ shortDate(element.endingDate) }}</td>
+            </tr>
+            <tr>
+                <td>Capacité max</td><td>{{ element.userMaxJoin }}</td>
+            </tr>
+            <tr>
+                <td>Actions</td>
+                <td style="display: flex; justify-content: space-between;">
+                    <button (click)="updateById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('modifier', 'title') }}</title>
+                            <path attr.d="{{ getSvg('modifier', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                    <button (click)="deleteById(element)" class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>{{ getSvg('supprimer', 'title') }}</title>
+                            <path attr.d="{{ getSvg('supprimer', 'attr.d') }}" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </details>
+</div>

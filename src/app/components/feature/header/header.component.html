@@ -1,0 +1,4 @@
+<header *ngIf="displayHeader">
+    <img [routerLink]="'/'" src="../../../../assets/images/logo.png" alt="logo" id="logo">
+    <app-search-bar *ngIf="displaySearchBar" (dataChange)="onDataReceive($event)"></app-search-bar>
+</header>

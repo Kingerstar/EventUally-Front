@@ -1,0 +1,4 @@
+<h2>S'inscrire</h2>
+<p><button class="button" (click)="switchForm()">Pour {{ wichForm === "user" ? "les organisations" : "toi" }}</button></p>
+<app-user-register *ngIf="wichForm === 'user'"></app-user-register>
+<app-organization-register *ngIf="wichForm === 'organization'"></app-organization-register>

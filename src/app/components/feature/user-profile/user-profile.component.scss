@@ -1,0 +1,95 @@
+.profile-head{
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: scroll;
+    img {
+        width: 30vw;
+        height: 30vw;
+        border: 0.5em solid var(--color-complement);
+        border-radius: 50%;
+    }
+    h2 {
+        margin: 0;
+        padding-top: calc(15vw - 0.5em);
+        font-size: 3em;
+    }
+}
+
+.week-proposal{
+    width: 90%;
+    margin: auto;
+    background-color: var(--color-accent);
+    box-shadow: var(--box-shadow-button);
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 2em;
+    padding: 0.5em;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    svg{
+        height: 2em;
+        width: 2em;
+        border: 2px solid black;
+        border-radius: 2em;
+        padding: 0.2em;
+        background-color: var(--color-dominant);
+    }
+    p{
+        color: var(--color-dominant);
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+}
+
+.tuto-swipe-tab{
+    cursor: pointer;
+    border: 2px solid var(--color-complement);
+    border-radius: 1em;
+    padding: 0.5em 2em 0.5em 1em;
+    margin: 1em 5vw;
+    position: relative;
+    svg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2em;
+        height: 2em;
+        fill: var(--color-accent);
+    }
+}
+
+.tab{
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 3em;
+    button{
+        min-width: 30vw;
+        padding: 0.5em 0;
+        font-weight: bold;
+        border: none;
+        border-right: 1px solid var(--color-dominant);
+        color: var(--color-dominant);
+        background-color: var(--color-light-accent);
+    }
+    .tab-selected{
+        background-color: var(--color-accent);
+    }
+}
+
+.tab-infos-container{
+    margin: 1em 2.5vw;
+}
+
+.logout{
+    border-radius: 2em;
+    svg{
+        height: 24px;
+        width: 24px;
+        fill: var(--color-dominant);
+        vertical-align: middle;
+    }
+}

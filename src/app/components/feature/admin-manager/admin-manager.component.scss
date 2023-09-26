@@ -1,0 +1,52 @@
+.tab-container{
+    display: flex;
+    margin-bottom: 2em;
+    button{
+        width: 100%;
+        border: none;
+        background-color: var(--color-light-accent);
+        color: var(--color-dominant);
+        font-weight: bold;
+        padding: 0.5em 0;
+    }
+    button:nth-child(2){
+        border-left: 1px solid var(--color-dominant);
+        border-right: 1px solid var(--color-dominant);
+    }
+    .tab-selected{
+        background-color: var(--color-accent);
+    }
+}
+
+details{
+    margin: 0.5em 0;
+    summary{
+        background-color: var(--color-accent);
+        color: var(--color-dominant);
+        font-weight: bold;
+        font-size: 1.2em;
+        padding: 0.5em;
+    }
+    table {
+        width: 100vw;
+        tr:nth-child(2n){
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        td:first-child{
+            font-weight: bold;
+            vertical-align: top;
+        }
+        img{
+            width: 100%;
+        }
+        button {
+            padding: 0.2em;
+            border-radius: 2em;
+            svg{
+                height: 2em;
+                vertical-align: sub;
+                fill: var(--color-dominant);
+            }
+        }
+    }
+}

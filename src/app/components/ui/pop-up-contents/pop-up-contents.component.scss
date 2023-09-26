@@ -1,0 +1,30 @@
+.pop-up{
+    border-radius: 1em 0 0 1em;
+    border: 2px solid black;
+    border-right: none;
+    padding: 0.5em 1em;
+    position: fixed;
+    right: 0;
+    z-index: 1000;
+    font-weight: bold;
+    background-color: var(--color-dominant);
+    animation: kf-popup-down 1000ms forwards;
+}
+@keyframes kf-popup-down {
+    0% {
+        bottom: 100vh;
+    }
+    100% {
+        bottom: calc(10vh + 1em);
+    }
+}
+
+.error{
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.work{
+    color: var(--color-valid);
+    border-color: var(--color-valid);
+}

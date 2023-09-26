@@ -1,0 +1,36 @@
+<div class="week-container">
+    <div *ngFor="let event of eventList; let i = index" class="event-card">
+        <!--A event has been found-->
+        <ng-container *ngIf="event.id !== null">
+            <div class="header">
+                <p *ngIf="i === 0">aujourd'hui</p>
+                <p *ngIf="i === 1">demain</p>
+                <p *ngIf="i > 1">{{ formatDay(event.startingDate) }}</p>
+            </div>
+            <div [routerLink]="['/event/'+urlIdName(event.id, event.name)]" class="contents">
+                <h3>{{ event.name }}</h3>
+                <p>{{ formatHour(event.startingDate) }}</p>
+                <p>{{ event.localization.streetNumber }} {{ event.localization.streetName }}<br>{{ event.localization.districtName }} {{ event.localization.cityName }}</p>
+            </div>
+            <div style="text-align: center;">
+                <app-join-event [receivedId]="event.id"></app-join-event>
+            </div>
+        </ng-container>
+        <!--No event this day-->
+        <ng-container *ngIf="event.id === null">
+            <div class="header">
+                <p *ngIf="i === 0">aujourd'hui</p>
+                <p *ngIf="i === 1">demain</p>
+                <p *ngIf="i > 1">...</p>
+            </div>
+            <div class="contents">
+                <h3>Repos 😴</h3>
+                <p>Malheureusement nous n'avons pas trouvé d'évènement pour aujourd'hui&nbsp;😞</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <button class="button">Tous les rejoindre&nbsp;!</button>
+</div>

@@ -1,0 +1,54 @@
+<form #organizationSubscribe="ngForm" (ngSubmit)="organizationSubscribe.valid && onSubmit()">
+    <app-input-style
+        name="name"
+        type="text"
+        label="Nom de l'organisation*"
+        placeHolder="Nom entier et qui sera visible"
+        [minLength]=3
+    ></app-input-style>
+
+    <app-localization-form [districtList]="districtList" (emitLocalization)="onReceiveLocalization($event)"></app-localization-form>
+
+    <!--<label for="logo">Logo</label>
+    <input type="file" [(ngModel)]="organization.logo" name="logo" id="logo" accept="image/png image/jpeg image/jpg" required>-->
+    
+    <app-categories-form [categoryList]="categoryList" (emitChoosedCategoryList)="onReceiveChoosedCategoryList($event)"></app-categories-form>
+
+    <app-title-style title="Informations"></app-title-style>
+
+    <app-input-style
+        name="web"
+        type="text"
+        label="Site web*"
+        placeHolder="www.orga.com"
+        [minLength]=6
+    ></app-input-style>
+
+    <app-input-style
+        name="description"
+        type="textarea"
+        label="Description*"
+        placeHolder="..."
+        [minLength]=3
+    ></app-input-style>
+
+    <app-title-style title="Authentification"></app-title-style>
+
+    <app-input-style
+        name="email"
+        type="email"
+        label="Email*"
+        placeHolder="orga@mail.com"
+        [minLength]=6
+    ></app-input-style>
+
+    <app-input-style
+        name="password"
+        type="password"
+        label="Mot de passe*"
+        placeHolder="******"
+        [minLength]=8
+    ></app-input-style>
+
+    <input type="submit" value="Collaborer">
+</form>

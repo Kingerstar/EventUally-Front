@@ -1,0 +1,37 @@
+<form #myUserForm="ngForm" (ngSubmit)="
+    usermodel.pseudo.length >= 4
+    && usermodel.email.length >= 6
+    && usermodel.password.length >= 8
+    && usermodel.password.match(regexp)
+    && onSubmit()
+">
+
+    <app-input-style
+        name="pseudo"
+        type="text"
+        label="Pseudo*"
+        placeHolder="Mon pseudo"
+        [minLength]=4
+        (inputChange)="onInputReceive($event, 'pseudo')"
+    ></app-input-style>
+
+    <app-input-style
+        name="email"
+        type="email"
+        label="Email*"
+        placeHolder="prenom.nom@mail.com"
+        [minLength]=6
+        (inputChange)="onInputReceive($event, 'email')"
+    ></app-input-style>
+
+    <app-input-style
+        name="password"
+        type="password"
+        label="Mot de passe*"
+        placeHolder="********"
+        [minLength]=8
+        (inputChange)="onInputReceive($event, 'password')"
+    ></app-input-style>
+
+    <input type="submit" value="Rejoins nous" class="button">
+</form>

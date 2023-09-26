@@ -1,0 +1,23 @@
+<div class="organization-container">
+    <div class="logo-container"><img [src]="organization.logo" [alt]="organization.name"></div>
+    <h2>{{ organization.name }}</h2>
+    <div class="category-container"><span *ngFor="let category of organization.categoryList" class="category-frame">{{
+            category }}</span></div>
+    <p>{{ organization.description }}</p>
+    <app-title-style title="Localisation"></app-title-style>
+    <ul>
+        <li>{{ organization.localization.streetNumber }} {{ organization.localization.streetName }}</li>
+        <li>{{ organization.localization.districtName }}, {{ organization.localization.cityName }}</li>
+        <li>{{ organization.localization.gpsCoordinates[0] }}&nbsp;; {{ organization.localization.gpsCoordinates[1] }}
+        </li>
+    </ul>
+    <app-title-style title="Contact"></app-title-style>
+    <ul>
+        <li>{{ organization.email }}</li>
+        <li>{{ organization.websiteLink }}</li>
+    </ul>
+    <br>
+    <div style="text-align: center;">
+        <app-orga-to-favorite *ngIf="organization.id !== 0 " [receivedId]="organization.id"></app-orga-to-favorite>
+    </div>
+</div>

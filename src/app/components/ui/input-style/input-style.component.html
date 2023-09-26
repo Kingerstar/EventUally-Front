@@ -1,0 +1,32 @@
+<div *ngIf="type != 'textarea'" class="input-container">
+    <label
+        [for]="name"
+        (click)="labelClicked($event)"
+    >{{ label }}</label>
+    <input
+        [type]="type"
+        [name]="name"
+        (focus)="labelClicked($event)"
+        (keyup)="onKeyup()"
+        [(ngModel)]="inputEntry"
+        [placeholder]="placeHolder"
+    >
+    <div *ngIf="type === 'password'" class="input-password eye-open" (click)="passwordEyeClicked()"></div>
+</div>
+
+<div *ngIf="type === 'textarea'" class="input-container">
+    <label
+        [for]="name"
+        (click)="labelClicked($event)"
+    >{{ label }}</label>
+    <textarea
+        [name]="name"
+        (focus)="labelClicked($event)"
+        (keyup)="onKeyup()"
+        [(ngModel)]="inputEntry"
+    >{{ placeHolder }}</textarea>
+</div>
+
+<p *ngIf="inputEntry && inputEntry.length < minLength" class="form-error">La longueur minimum est de {{ minLength }}.</p>
+
+<p *ngIf="type === 'password' && inputEntry && !inputEntry.match('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}')" class="form-error">Doit au moins contenir une minuscule, une majuscule et un chiffre.</p>

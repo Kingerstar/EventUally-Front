@@ -1,0 +1,78 @@
+.filters-container{
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 1em;
+    .filter-button {
+        background-color: var(--color-dominant);
+        color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+        border-top: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding: 0.2em 0.5em;
+        font-size: 1.5em;
+        font-weight: bold;
+        letter-spacing: 2px;
+        &.filter-selected{
+            background-color: var(--color-accent);
+            color: var(--color-dominant);
+        }
+    }
+}
+
+.popup-container {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.popup-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 80vw;
+    max-width: 500px;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 300px;
+}
+
+svg.close {
+    cursor: pointer;
+    position: absolute;
+    fill: var(--color-accent);
+    right: 1em;
+    height: 2em;
+}
+
+h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+label {
+    margin: 0.5em;
+}
+
+input {
+    cursor: pointer;
+    height: 1.2em;
+    width: 1.2em;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+}

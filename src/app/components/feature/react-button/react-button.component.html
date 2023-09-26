@@ -1,0 +1,19 @@
+<div class="sum-of-reacts">
+    <span *ngIf="reactions['🫶'] > 0" class="emoji"> 🫶{{ reactions['🫶'] }} </span>
+    <span *ngIf="reactions['🥰'] > 0" class="emoji"> 🥰{{ reactions['🥰'] }} </span>
+    <span *ngIf="reactions['🎉'] > 0" class="emoji"> 🎉{{ reactions['🎉'] }} </span>
+    <span *ngIf="reactions['🤗'] > 0" class="emoji"> 🤗{{ reactions['🤗'] }} </span>
+</div>
+
+
+<div class="react-body">
+    <button class="react" class="button" (click)="toggleReactList()" [ngClass]="isConnected ? '' : 'less-important-action'">Réagir</button>
+    <div [ngClass]="{'popup-animation': isClicked}">
+        <ul class="react-list" *ngIf="isClicked">
+            <button class="react-button" (click)="addReaction('🫶')" title="J'aime">🫶</button>
+            <button class="react-button" (click)="addReaction('🥰')" title="J'adore">🥰</button>
+            <button class="react-button" (click)="addReaction('🎉')" title="Confettis">🎉</button>
+            <button class="react-button" (click)="addReaction('🤗')" title="Solidaire">🤗</button>
+        </ul>
+    </div>
+</div>

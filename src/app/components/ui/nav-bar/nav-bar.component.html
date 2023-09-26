@@ -1,0 +1,10 @@
+<nav *ngIf="displayNav">
+    <a *ngFor="let link of linkList; let i = index" [routerLink]="link.router === 'login' && role ? 'profile' : link.router" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        <svg *ngIf="hasToDisplaySvg(link.router)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>{{ link.svg.title }}</title>
+            <path [attr.d]="link.svg.dAttribute" />
+        </svg>
+        <img *ngIf="role && link.router ==='login'" [src]="profilePicture" alt="Logo profile" class="logo-profile">
+    </a>
+</nav>

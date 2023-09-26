@@ -1,0 +1,3 @@
+<button (click)="joinOrga()" class="button" [ngClass]="isConnected && !isOrgaFollowed ? '' : 'less-important-action'">{{
+    isOrgaFollowed ?
+    'Ne plus suivre': 'Suivre' }}</button>

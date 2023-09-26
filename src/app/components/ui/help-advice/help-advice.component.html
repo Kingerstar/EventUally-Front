@@ -1,0 +1,29 @@
+<h2>Aides et conseils</h2>
+<section>
+    <app-title-style title="Tutoriel"></app-title-style>
+    <p>
+        Si tu as oublié certaines choses concernant le fonctionnement de l'application, tu peux le rendre de nouveau accessible pour mieux maîtriser toutes les fonctionnalités&nbsp;🎓<br>
+        <button class="button" (click)="resetLocalStorageTuto()">Rejouer le tutoriel</button>
+    </p>
+</section>
+<section>
+    <app-title-style title="Accueil"></app-title-style>
+    <p>
+        Pour afficher de nouveau la page d'accueil, pour que de nouveau on te souhaites la bienvenue&nbsp;👋<br>
+        <button class="button" [routerLink]="['/welcome']">Afficher la page d'accueil</button>
+    </p>
+</section>
+<section>
+    <app-title-style title="Contact"></app-title-style>
+    <p>
+        Si tu as une remarque à nous faire, ou nous montrer tout ton amour, c'est par ici que ça se passe&nbsp;📨<br>
+        <button class="button" [routerLink]="['/contact']">Contacter</button>
+    </p>
+</section>
+<section>
+    <app-title-style title="Mentions légales"></app-title-style>
+    <p>
+        La partie la moins intéressante du site, et pourtant tellement essentielle. Tu y trouveras les conditions générales d'utilisation (CGU), le traitement des données, la propriété intellectuelle, et les informations nous concernant&nbsp;⚖️<br>
+        <button class="button" [routerLink]="['/legal']">S'informer</button>
+    </p>
+</section>

@@ -1,0 +1,31 @@
+<div class="filters-container">
+    <button class="filter-button" (click)="toggleIsClicked = !toggleIsClicked" [ngClass]="isFiltered() ? 'filter-selected' : ''">{{ isFiltered() ? 'Filtré !' : 'Filtre' }}</button>
+</div>
+
+<div class="popup-container" *ngIf="toggleIsClicked">
+    <div class="popup-body">
+        <svg class="close" (click)="toggleIsClicked = !true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>{{ getCloseSvg()[0] }}</title><path [attr.d]="getCloseSvg()[1]" /></svg>
+        <h3>Catégories</h3>
+        <div class="categories-container">
+            <div *ngFor="let category of categories">
+                <label>
+                    <input type="checkbox" (change)="toggleCategory(category)" [checked]="isCategorySelected(category)">
+                    {{ category.category.charAt(0) | uppercase }}{{ category.category.slice(1) }}
+                </label>
+                <div *ngIf="isCategorySelected(category)">
+                    <div *ngFor="let subcategory of category.subcategoryList">
+                        <label>
+                            <input type="checkbox" (change)="toggleSubcategory(subcategory)"
+                                [checked]="isSubcategorySelected(subcategory)">
+                            {{ subcategory.charAt(0) | uppercase }}{{subcategory.slice(1)}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button class="button less-important-action" (click)="resetSelections()">Initialiser</button>
+            <button class="button" (click)="toggleIsClicked = !true">Valider</button>
+        </div>
+    </div>
+</div>

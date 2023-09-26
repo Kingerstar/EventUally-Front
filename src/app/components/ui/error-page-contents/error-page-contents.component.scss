@@ -1,0 +1,36 @@
+.error-page-container{
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+.score-board{
+    z-index: 1;
+    position: absolute;
+    right: 0;
+}
+.oops{
+    z-index: 1;
+    width: 100vw;
+    position: absolute;
+    text-align: center;
+    margin-top: 3em;
+    .timer-seconds{
+        font-size: 3em;
+    }
+    .timer-ms{
+        font-size: 2em;
+    }
+}
+.bug{
+    position: absolute;
+    height: 32px;
+    width: 32px;
+}
+.alive{
+    fill: var(--color-complement);
+}
+.dead{
+    fill: var(--color-accent);
+}

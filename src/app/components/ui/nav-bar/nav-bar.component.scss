@@ -1,0 +1,26 @@
+nav{
+    height: 10vh;
+    border-top: 1vh solid var(--color-complement);
+    display: flex;
+    justify-content: space-evenly;
+    a, svg{
+        height: 100%;
+    }
+    svg{
+        fill: var(--color-complement);
+    }
+    .active-link svg{
+        fill: var(--color-accent);
+    }
+    .active-link .logo-profile{
+        border-color: var(--color-accent);
+    }
+    .logo-profile{
+        display: block;
+        height: 7.8vh;
+        width: 7.8vh;
+        margin-top: 0.8vh;
+        border: 0.8vh solid var(--color-complement);
+        border-radius: 2em;
+    }
+}

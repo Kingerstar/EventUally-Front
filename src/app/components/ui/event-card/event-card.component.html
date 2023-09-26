@@ -1,0 +1,38 @@
+<div class="event-card-body">
+    <div [routerLink]="link" style="cursor: pointer;">
+        <img [src]="event.banner" alt="Image de l'évènement" class="event-image">
+        <div class="card-body">
+            <ul class="categories">
+                <li *ngFor="let category of event.categoryList" class="tag">
+                    {{capitalizeFirstLetter(category)}}
+                </li>
+            </ul>
+
+            <div class="event-card">
+                <h3>{{ event.name }}</h3>
+                <div class="details-container">
+                    <div class="date">
+                        <p class="date-svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>Calendrier</title>
+                                <path [attr.d]="calendarSvg[1]" />
+                            </svg>{{ formatDateAndTime(event.startingDate) }}</p>
+                    </div>
+                    <div class="localization"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <title>Localisation</title>
+                            <path [attr.d]="mapMarkerSvg[1]" />
+                        </svg>
+                        <p>{{event.localization.streetNumber}} {{event.localization.streetName}} <br>
+                            {{event.localization.districtName}}, {{
+                            event.localization.cityName}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="interaction-buttons">
+        <app-react-button></app-react-button>
+        <app-join-event [receivedId]="event.id"></app-join-event>
+    </div>
+</div>

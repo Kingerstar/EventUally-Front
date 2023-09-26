@@ -1,0 +1,42 @@
+<div (change)="onLocalizationChange()">
+    <app-title-style title="Lieu de résidence"></app-title-style>
+    <app-input-style
+        name="streetNumber"
+        type="text"
+        label="Numéro de rue*"
+        placeHolder="0"
+        [minLength]=1
+    ></app-input-style>
+    <app-input-style
+        name="streetName"
+        type="text"
+        label="Nom de la voirie*"
+        placeHolder="Rue Saint James"
+        [minLength]=3
+    ></app-input-style>
+    <app-input-style
+        name="cityName"
+        type="text"
+        label="Nom de la ville*"
+        placeHolder="Bordeaux, Toulouse"
+        [minLength]=3
+    ></app-input-style>
+    <!--<label for="district-name">Nom du quartier</label>
+    <select name="district-name" [(ngModel)]="localization.districtName" id="district-name" required>
+        <option *ngFor="let district of districtList" [value]="district">{{ district }}</option>
+    </select>-->
+    <app-title-style title="Coordonnées GPS"></app-title-style>
+    <app-input-style
+        name="latitude"
+        type="number"
+        label="Latitude*"
+        placeHolder="46.8365"
+    ></app-input-style>
+    <app-input-style
+        name="longitude"
+        type="number"
+        label="Longitude*"
+        placeHolder="-0.5714"
+        [minLength]=3
+    ></app-input-style>
+</div>

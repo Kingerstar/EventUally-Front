@@ -1,0 +1,39 @@
+<section class="hero">
+    <h1>eventUally</h1>
+    <p>
+        Sois au cœur des évènements de ta ville qui te correspondent.<br>
+        Pour les personnes qui...<br><span id="changing-text">{{ currentChangingText }}</span><br>
+    </p>
+    <div class="discover"><a class="button" [routerLink]="['/map']">Découvrir&nbsp;!</a></div>
+    <div class="triangle"></div>
+</section>
+<section>
+    <app-title-style title="Tu es une..."></app-title-style>
+    <div class="as-role-buttons-container">
+        <button (click)="changeAsRole('user')" [ngClass]="asRole === 'user' ? 'selected' : ''">Utilisatrice</button>
+        <button (click)="changeAsRole('orga')" [ngClass]="asRole === 'orga' ? 'selected' : ''">Organisation</button>
+    </div>
+    <br>
+    <ul>
+        <li *ngFor="let feat of asRole === 'user' ? userLi : orgaLi">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>{{ searchSvg(feat[0])[0] }}</title><path [attr.d]="searchSvg(feat[0])[1]" /></svg>
+            {{ feat[1] }}
+        </li>
+    </ul>
+</section>
+<section>
+    <app-title-style title="Quelques chiffres"></app-title-style>
+    <div *ngFor="let figure of figureList; let i = index" class="figure-card">
+        <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>{{ figure.svg[0] }}</title><path [attr.d]="figure.svg[1]" /></svg></div>
+        <div>
+            <p *ngIf="figure.number$ | async as number">
+                <span class="number">{{ number }}</span><br>
+                <span class="highlight">{{  figure.description.split(" ")[0] }}</span>
+                {{  figure.description.replace(figure.description.split(" ")[0], "") }}
+            </p>
+        </div>
+    </div>
+</section>
+<section style="text-align: center;">
+    <a class="button" [routerLink]="['/map']">Voir les évènements</a>
+</section>

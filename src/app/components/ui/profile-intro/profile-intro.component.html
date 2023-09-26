@@ -1,0 +1,21 @@
+<p>{{ introduction }}</p>
+<button (click)="updateIntro()" class="button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>{{ getSvg('modifier', 'title') }}</title>
+        <path attr.d="{{ getSvg('modifier', 'attr.d') }}" />
+    </svg>
+    Modifier
+</button>
+
+<div *ngIf="isEditing" class="edit-intro-container">
+    <div class="edit-intro-popup">
+        <p>Que dire pour vous introduire&nbsp;?</p>
+        <form>
+            <textarea [(ngModel)]="introduction" name="introduction" id="introduction" autofocus></textarea>
+            <div style="display: flex; justify-content: space-between;">
+                <button (click)="closePopup()" class="button less-important-action">Annuler</button>
+                <button (click)="sendIntro()" class="button">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>

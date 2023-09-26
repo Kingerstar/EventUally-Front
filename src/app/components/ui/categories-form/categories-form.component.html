@@ -1,0 +1,20 @@
+<app-title-style title="Catégories"></app-title-style>
+<app-information infoTextContent="La première catégorie est considérée comme la principale. Elle a une couleure différente pour l'indiquer. C'est celle qui sera prise en première pour les affichages."></app-information>
+
+<div *ngFor="let categories of categoryList; let c = index" class="categories-container">
+    <div class="category-name-container"
+        [ngClass]="categorySelectedList[c][0] ? 'checkbox-primcat-checked' : ''"
+        [ngClass]="firstCategoryPicked[0] === c && firstCategoryPicked[1] === 0 ? 'first-checkbox-primcat-checked' : ''">
+        <input type="checkbox" [name]="categories.category" [id]="categories.category" (click)="checkboxPrimaryCategoryClicked(c)" (change)="onCheckboxChange()">
+        <label [for]="categories.category">{{ categories.category }}</label>
+    </div>
+    <div class="subcategories-container">
+        <div *ngFor="let category of categories.subcategoryList; let i = index"
+            class="subcategory"
+            [ngClass]="categorySelectedList[c][i+1] ? 'checkbox-checked' : ''"
+            [ngClass]="firstCategoryPicked[0] === c && firstCategoryPicked[1] === i+1 ? 'first-checkbox-checked' : ''">
+                <input type="checkbox" [name]="category" [id]="category" (click)="checkboxClicked(c,i)" (change)="onCheckboxChange()">
+                <label [for]="category"><span>{{ category }}</span></label>
+        </div>
+    </div>
+</div>

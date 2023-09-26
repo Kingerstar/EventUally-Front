@@ -1,0 +1,16 @@
+img{
+    max-width: 80vw;
+}
+.hidden-svg{
+    height: 0;
+    width: 0;
+}
+.logo-splash{
+    text-align: center;
+    transform: translateY(50%);
+    animation: kf-logo-splash 1000ms forwards;
+}
+@keyframes kf-logo-splash {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
